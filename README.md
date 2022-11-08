@@ -27,7 +27,7 @@ We are using Nest framework for our api application for many reasons:
 1. It's easy to get started with if you are familiar with typescript already.
 2. It has a fast development speed.
 3. It follows the MVC project structure.
-4. It has an easy integration with other modules like MongoDB or Swagger in this case.
+4. It has an easy integration with other modules like MongoDB, Server-Static or Swagger in this case.
 
 ## Enviroment variables 
 
