@@ -9,6 +9,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { environments } from './environments';
 import config from './config';
 
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,6 +25,9 @@ import config from './config';
     RoomModule,
     MongooseModule.forRoot(process.env.MONGODB_URL, {
       useNewUrlParser: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
     }),
   ],
   controllers: [AppController],

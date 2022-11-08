@@ -10,10 +10,12 @@ import {
   Query,
   NotFoundException,
 } from '@nestjs/common';
+import { ApiTags, ApiQuery } from '@nestjs/swagger';
 
 import { RoomService } from './room.service';
 import { CreateRoomDto } from './dto/room.dto';
 
+@ApiTags('room')
 @Controller('room')
 export class RoomController {
   constructor(private readonly roomService: RoomService) {}
@@ -33,6 +35,7 @@ export class RoomController {
     return res.status(HttpStatus.OK).json(rooms);
   }
 
+  @ApiQuery({ name: 'roomId' })
   @Delete('/delete')
   async deleteRoom(@Res() res, @Query('roomId') roomId) {
     const room = await this.roomService.deleteRoom(roomId);
@@ -43,6 +46,7 @@ export class RoomController {
     });
   }
 
+  @ApiQuery({ name: 'roomId' })
   @Put('/update')
   async updateRoom(
     @Res() res,
